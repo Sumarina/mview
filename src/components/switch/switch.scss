@@ -1,0 +1,82 @@
+.pt-switch{
+    display: inline-block;
+    width: 50px;
+    height: 22px;
+    background-color: #bbbbbb;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    vertical-align: middle;
+    margin-bottom: 0;
+    .switch__slide{
+        position: absolute;
+        top: 0px;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        color:#ffffff;
+        transition: left 0.25s ease-out;
+        &--on{
+            text-align: center;
+            left: 0px;
+
+            width: 30px;
+            height: 22px;
+            line-height: 22px;
+            display: block;
+            font-size: 12px;
+            font-weight: normal;
+            position: absolute;
+            top: 0px;
+
+            text-align: center;
+            left: 47px;
+
+            left: 18px;
+            border-radius: 11px;
+        }
+        &--off{
+            background-color: #bbbbbb;
+            left: -29px;
+
+            width: 30px;
+            height: 22px;
+            line-height: 22px;
+            display: block;
+            font-size: 12px;
+            font-weight: normal;
+            position: absolute;
+            top: 0px;
+
+        }
+        &--bg{
+
+            display: block;
+            font-size: 12px;
+            font-weight: normal;
+            position: absolute;
+            top: 0px;
+
+            background-color: #ffffff;
+            border-radius: 50%;
+
+            width: 18px;
+            line-height: 18px;
+            height: 18px;
+            top: 2px;
+            left: 0px;
+        }
+
+        &--is-on{
+            left: 0px;
+            background-color: #b2cf07;
+
+        }
+        &--is-off{
+            left:31px;
+            background-color: #bbbbbb;
+
+        }
+    }
+}
