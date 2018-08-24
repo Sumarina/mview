@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <Switch/>
+    <Switches/>
   </div>
 </template>
 
 <script>
-import Switch from './components/switch/Switch.vue'
+import Switches from './components/switch/Switch.vue'
 
 export default {
   name: 'App',
   components: {
-    Switch
+    Switches
   }
 }
 </script>
