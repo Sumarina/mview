@@ -1,5 +1,5 @@
 <template>
-    <label class="pt-switch">
+    <label class="m-switch">
         <input type="checkbox"
                ref="switchIpt"
                v-model="model"
@@ -8,103 +8,21 @@
                @change="handleChange"
         >
 
-        <span class="pt-switch__slider"
+        <span class="m-switch__slider"
               ref="switchSlider"
-              :class="model ? 'pt-switch__slider--is-on' : 'pt-switch__slider--is-off'"
+              :class="model ? 'is-on' : 'is-off'"
         >
-            <span class="pt-switch__slider--on">ON</span>
-            <span class="pt-switch__slider--off">OFF</span>
-            <span class="pt-switch__slider--bg"></span>
+            <span class="m-switch__slider--on">ON</span>
+            <span class="m-switch__slider--off">OFF</span>
+            <span class="m-switch__slider--bg"></span>
         </span>
     </label>
 </template>
 
-<style lang="postcss" scoped>
-@component-namespace pt {
-  @b switch {
-    display: inline-block;
-    width: 50px;
-    height: 22px;
-    background-color: #bbbbbb;
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px;
-    vertical-align: middle;
-    margin-bottom: 0;
-    @e slider {
-      position: absolute;
-      top: 0px;
-      display: block;
-      width: 100%;
-      height: 100%;
-      border-radius: 20px;
-      color: #ffffff;
-      transition: left 0.25s ease-out;
-      @when on {
-        left: 0px;
-        background-color: #b2cf07;
-      }
-
-      @when off {
-        left: 31px;
-        background-color: #bbbbbb;
-      }
-      @m on{
-          width: 30px;
-            height: 22px;
-            line-height: 22px;
-            display: block;
-            font-size: 12px;
-            font-weight: normal;
-            position: absolute;
-            top: 0px;
-
-            text-align: center;
-            left: 47px;
-
-            left: 18px;
-            border-radius: 11px;
-      }
-      @m off{
-          background-color: #bbbbbb;
-            left: -29px;
-
-            width: 30px;
-            height: 22px;
-            line-height: 22px;
-            display: block;
-            font-size: 12px;
-            font-weight: normal;
-            position: absolute;
-            top: 0px;
-      }
-      @m bg{
-          display: block;
-            font-size: 12px;
-            font-weight: normal;
-            position: absolute;
-            top: 0px;
-
-            background-color: #ffffff;
-            border-radius: 50%;
-
-            width: 18px;
-            line-height: 18px;
-            height: 18px;
-            top: 2px;
-            left: 0px;
-      }
-    }
-  }
-}
-
-</style>
-
 <script>
-// import './switch.css';
-
+import './switch.css';
 export default {
-  name: "Switches",
+  name: "mSwitches",
 
   props: {
     size: String,
