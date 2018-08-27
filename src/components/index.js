@@ -1,10 +1,13 @@
 import MSwitch from './switch';
 import MButton from './button';
+import MSelect from './select';
 
 
 const components = [
   MSwitch,
-  MButton
+  MButton,
+  MSelect,
+  MSelect.MOption
 ];
 
 const install = function (Vue) {
@@ -19,5 +22,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   install,
   MSwitch,
-  MButton
+  MButton,
+  MSelect,
+  MOption:MSelect.MOption
 }
