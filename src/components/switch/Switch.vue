@@ -22,10 +22,9 @@
 <script>
 import './switch.css';
 export default {
-  name: "mSwitches",
+  name: "mSwitch",
 
   props: {
-    size: String,
     disabled: {
       type: Boolean,
       default: false
@@ -45,7 +44,6 @@ export default {
      * @param event
      */
     handleChange(event) {
-      console.log("triggered event");
       const status = event.currentTarget.checked;
       this.model = status;
       this.$emit("input", status);

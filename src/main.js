@@ -3,6 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 
+import mview from './components';
+
+Vue.use(mview);
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
