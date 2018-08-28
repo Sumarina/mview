@@ -1,0 +1,51 @@
+@component-namespace m{
+    @b paging{
+        white-space:nowrap;
+        padding:2px 5px;
+        color:#303133;
+        font-weight:700;
+
+        @e total{
+            margin-right:10px;
+            font-weight:400;
+            color:#606266;
+            display:inline-block;
+        }
+        
+        @e pager{
+            list-style:none;
+            padding:0;
+            margin:0;
+            display:inline-block;
+            @m pre{
+                display:inline-block;
+                cursor:pointer;
+            }
+            @m number{
+                display:inline-block;
+                width:26px;
+                height:26px;
+                line-height:26px;
+                border-radius:14px;
+                text-align:center;
+                color:#bbbbbb;
+                cursor:pointer;
+                margin:0 5px;
+            }
+            @m next{
+                display:inline-block;
+                cursor:pointer;
+            }
+            & .active{
+                color:#ffffff;
+                cursor:default;
+                background:#b2cf07;
+            }
+        }
+        @e jump{
+            @m number{
+
+            }
+        }
+    }
+}
