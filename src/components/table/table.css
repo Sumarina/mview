@@ -1,0 +1,68 @@
+@component-namespace m{
+    @b table{
+        width:100%;
+
+        .row-stripe{
+            background-color:#f9f9f9;
+        }
+
+        @e wrap{
+            display:flex;
+        }
+
+        @e column{
+            &:not(.grow){
+                max-width:30%;
+            }
+            &.grow{
+                flex-grow:1;
+                width:20%;
+            }
+            &.shrink{
+                flex-shrink:0;
+            }
+            & .first{
+                display:flex;
+                align-items:center;
+            }
+            & .justify-align-left{
+                justify-content:flex-start;
+            }
+            & .justify-align-center{
+                justify-content:center;
+            }
+            & .justify-align-right{
+                justify-content:flex-end;
+            }
+            @e index{
+                width:18px;
+                color:#bbbbbb;
+                padding:0 5px;
+                text-align:center;
+            }
+            .thead{
+                height:40px;
+                color:#bbb;
+                display:flex;
+                align-items:center;
+                padding-right:20px;
+                cursor:pointer;
+            }
+            .sort-active{
+                color:#B2CF07;
+            }
+            .tbody-row{
+                height:57px;
+                line-height:57px;
+                padding-right:20px;
+                display:flex;
+                overflow:hidden;
+                .text{
+                    text-overflow:ellipsis;
+                    overflow:hidden;
+                    white-space:nowrap;
+                }
+            }
+        }
+    }
+}
