@@ -1,13 +1,17 @@
 import MSwitch from './switch';
 import MButton from './button';
 import MSelect from './select';
+import MTable from './table';
+import MPagination from './pagination';
 
 
 const components = [
   MSwitch,
   MButton,
   MSelect,
-  MSelect.MOption
+  MSelect.MOption,
+  MTable,
+  MPagination
 ];
 
 const install = function (Vue) {
@@ -24,5 +28,7 @@ export default {
   MSwitch,
   MButton,
   MSelect,
+  MTable,
+  MPagination,
   MOption:MSelect.MOption
 }

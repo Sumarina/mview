@@ -30,6 +30,11 @@
           "desc":"Switch 按钮",
           "name":"switch",
           "path":"/switch"
+        },
+        {
+          "desc":"table",
+          "name":"table",
+          "path":"/table"
         }
       ]
     

@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import "./pagination.css";
+import "./Pagination.css";
 export default {
-  name: "mPagination",
+  name: "MPagination",
   props: {
     dataCount: Number,
     //设置每页显示最大多少条数据
