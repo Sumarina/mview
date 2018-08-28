@@ -1,0 +1,38 @@
+{
+  "开发指南": [
+    {
+      "name": "index",
+      "path": "/",
+      "type": "pages"
+    },
+    {
+      "name": "giud",
+      "path": "/giud",
+      "desc": "介绍"
+    }
+  ],
+  "组件": [
+    {
+      "desc": "基础组件",
+      "path": "/component",
+      "items": [
+        {
+          "desc": "select 选择器",
+          "name": "select",
+          "path": "/select"
+        },
+        {
+          "desc": "Button 按钮",
+          "name": "button",
+          "path": "/button"
+        },
+        {
+          "desc":"Switch 按钮",
+          "name":"switch",
+          "path":"/switch"
+        }
+      ]
+    
+    }
+  ]
+}
