@@ -31,6 +31,12 @@
                 color:#bbbbbb;
                 cursor:pointer;
                 margin:0 5px;
+                &.more{
+                    &:before{
+                        content:"\E646";
+                        line-height:30px;
+                    }
+                }
             }
             @m next{
                 display:inline-block;
@@ -44,7 +50,16 @@
         }
         @e jump{
             @m number{
-
+                width:48px;
+                height:28px;
+                border-radius:4px;
+                padding:0 3px;
+                outline:none;
+                border:1px solid #dcdfed;
+                text-align:center;
+                &:focus{
+                    outline:none;
+                }
             }
         }
     }

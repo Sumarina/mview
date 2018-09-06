@@ -35,6 +35,11 @@
           "desc":"table",
           "name":"table",
           "path":"/table"
+        },
+        {
+          "desc":"分页",
+          "name":"pagination",
+          "path":"/pagination"
         }
       ]
     

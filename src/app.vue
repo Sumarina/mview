@@ -10,7 +10,7 @@
     <br>
     <m-table :data="data" :columns="column">
     </m-table>
-    <!-- <m-pagination :dataLimit=5 :pageOffset="pageOffset" :dataCount="dataCount" :pageNumberLimit=8 :afterSelectPage="selectPage" /> -->
+    <m-pagination :dataLimit=5 :pageOffset="pageOffset" :dataCount="dataCount" :pageNumberLimit=8 :afterSelectPage="selectPage" />
     <br>
   </div>
 </template>
