@@ -5,7 +5,7 @@
 ### 基础用法
 
 <div class="demo-block" >
-<m-pagination :total=100 />
+<m-pagination :total=1000 />
 
 <script>
     export default {
