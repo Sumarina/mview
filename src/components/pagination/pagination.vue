@@ -2,11 +2,11 @@
     <div class="m-paging">
         <!-- <span class="m-paging__total">共{{totalPageNumber}}页</span> -->
         <ul class="m-paging__pager">
-            <!-- <li class="m-paging__pager--pre" @click="jumpPage(currentPage-1)">前翻页</li> -->
+            <li class="m-paging__pager--pre" @click="onPageTurn(currentPage-1)">前翻页</li>
             <li class="m-paging__pager--number" :class="{active:currentPage===item.value}" v-for="(item,index ) in pageNumberArr" :key="index" @click="onPageTurn(item)">
                 {{item.type==='ellipsis'?'...':item.value}}
             </li>
-            <!-- <li class="m-paging__pager--next" @click="jumpPage(currentPage+1)">后翻页</li> -->
+            <li class="m-paging__pager--next" @click="onPageTurn(currentPage+1)">后翻页</li>
         </ul>
         <span class="m-paging__jump">
         前往
@@ -57,8 +57,22 @@ export default {
       this.pageNumberArr = this.computePageNumberArr();
     },
     onPageTurn: function(item) {
+      if (!(item instanceof Object)) {
+        let _flag = false;
+        this.currentPage = item;
+        for (let i of this.pageNumberArr) {
+          if (i["value"] === item) {
+            _flag = true;
+            break;
+          }
+        }
+        if (!_flag) {
+          this.pageNumberArr = this.computePageNumberArr();
+        }
+        return;
+      }
       let _value = item["value"];
-      let _type = item["type"]; 
+      let _type = item["type"];
       /**
        * the item of current click ,it's an object that own three custom property.
        * if the property type of this item is 'ellispsi', means this item is ellipsis.we need to get a new pageNumberArr.
@@ -84,7 +98,7 @@ export default {
           value: 1, //数值
           type: "number" //type number or ellipsis
         },
-        _currentPage = this.currentPage;//current page number
+        _currentPage = this.currentPage; //current page number
 
       const LASTPAGENUM = this.pageNumbers; //last number
       const PAGECOUNT = this.pageCount; // the count is that show pagenumbers
