@@ -40,6 +40,11 @@
           "desc":"分页",
           "name":"pagination",
           "path":"/pagination"
+        },
+        {
+          "desc":"slider",
+          "name":"slider",
+          "path":"/slider"
         }
       ]
     

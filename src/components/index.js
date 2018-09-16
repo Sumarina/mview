@@ -3,6 +3,7 @@ import MButton from './button';
 import MSelect from './select';
 import MTable from './table';
 import MPagination from './pagination';
+import MSlider from './slider';
 
 
 const components = [
@@ -11,7 +12,8 @@ const components = [
   MSelect,
   MSelect.MOption,
   MTable,
-  MPagination
+  MPagination,
+  MSlider
 ];
 
 const install = function (Vue) {
@@ -30,5 +32,6 @@ export default {
   MSelect,
   MTable,
   MPagination,
+  MSlider,
   MOption:MSelect.MOption
 }
