@@ -1,7 +1,7 @@
 @component-namespace m{
     @b slider{
         position:relative;
-
+        cursor:pointer;
         @e node{
             height:20px;
             width:20px;
@@ -15,8 +15,10 @@
             z-index:1;
             &:hover{
                 cursor:grab;
-                transform:scale(1.2);
-                
+                transform:scale(1.2);  
+            }
+            &.grabing{
+                cursor: grabbing;
             }
             
         }
