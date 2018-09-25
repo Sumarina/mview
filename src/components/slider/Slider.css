@@ -1,38 +1,46 @@
-@component-namespace m{
-    @b slider{
-        position:relative;
-        cursor:pointer;
-        @e node{
-            height:20px;
-            width:20px;
-            border-radius:12px;
-            border:2px solid #b2cf07;
-            background:#ffffff;
-            display:block;
-            position:absolute;
-            top:-8px;
-            left:-10px;
-            z-index:1;
-            &:hover{
-                cursor:grab;
-                transform:scale(1.2);  
-            }
-            &.grabing{
-                cursor: grabbing;
-            }
-            
+@component-namespace m {
+  @b slider {
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    @e wrapper {
+      height: 30px;
+      width: 30px;
+      position: absolute;
+      transform: translateX(-50%);
+      top: -10px;
+      text-align: center;
+      z-index: 1000;
+      &:hover {
+        cursor: grab;
+      }
+
+      /**&.grabing {
+        cursor: grabbing;
+      }*/
+
+      @m point {
+        height: 20px;
+        width: 20px;
+        border-radius: 12px;
+        border: 2px solid #b2cf07;
+        background: #ffffff;
+        &:hover {
+          transform: scale(1.2);
         }
-        @e left{
-            height:8px;
-            border-radius:4px;
-            background:#b2cf07;
-            position:absolute;
-        }
-        @e background{
-            width:100%;
-            height:8px;
-            border-radius:4px;
-            background:#e4e7ed;
-        }
+      }
     }
+    @e left {
+      height: 8px;
+      border-radius: 4px;
+      background: #b2cf07;
+      position: absolute;
+    }
+    @e background {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: #e4e7ed;
+    }
+  }
 }
