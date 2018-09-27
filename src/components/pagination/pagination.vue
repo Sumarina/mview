@@ -57,8 +57,12 @@ export default {
       this.pageNumberArr = this.computePageNumberArr();
     },
     onPageTurn: function(item) {
-      if (!(item instanceof Object)) {
+      let type = Object.prototype.toString.call(item);
+      if (type.indexOf("Number") != -1) {
         let _flag = false;
+        if (item < 1 || item > this.pageNumbers) {
+          return;
+        }
         this.currentPage = item;
         for (let i of this.pageNumberArr) {
           if (i["value"] === item) {
@@ -71,6 +75,7 @@ export default {
         }
         return;
       }
+
       let _value = item["value"];
       let _type = item["type"];
       /**
@@ -79,7 +84,12 @@ export default {
        * if the property type is 'number',means this item is number,it's needn't to get pageNumberArr.
        */
       if (_type === "number") {
-        this.currentPage = item["value"];
+        if (_value === 1 || _value === this.pageNumbers) {
+          this.currentPage = item["value"];
+          this.pageNumberArr = this.computePageNumberArr();
+        } else {
+          this.currentPage = item["value"];
+        }
       } else {
         if (_value < this.currentPage) {
           this.currentPage =
