@@ -6,6 +6,7 @@
           <div class="m-slider__wrapper--point">
           </div>
         </div>
+        {{value}}
     </div>
 </template>
 
@@ -29,30 +30,30 @@ export default {
       type: Number,
       default: 1
     },
-    min:{
-      type:Number,
-      default:0
+    min: {
+      type: Number,
+      default: 0
     },
-    max:{
-      type:Number,
-      default:100
+    max: {
+      type: Number,
+      default: 100
     }
   },
   data() {
     return {
-      vertical:false,
+      vertical: false,
       draging: false,
       startX: 0,
       startPosition: 0,
       newPosition: 0,
       oldValue: this.defalutValue,
-      value:this.defalutValue,
-      sliderSize:1
+      value: this.defalutValue,
+      sliderSize: 1
     };
   },
   computed: {
     currentPosition: function() {
-      return `${((this.value-this.min) / (this.max-this.min)) * 100}%`;
+      return `${((this.value - this.min) / (this.max - this.min)) * 100}%`;
     },
     barStyle: function() {
       return {
@@ -70,14 +71,14 @@ export default {
     },
     onDragStart: function(event) {
       this.draging = true; //start draging
-      this.startX=event.clientX;
+      this.startX = event.clientX;
       this.startPosition = parseFloat(this.currentPosition);
-      this.newPosition = this.startPosition;      
+      this.newPosition = this.startPosition;
     },
     onDraging: function(event) {
       if (this.draging) {
         let clientX = event.clientX;
-        let diff = (clientX - this.startX)/this.sliderSize*100;
+        let diff = ((clientX - this.startX) / this.sliderSize) * 100;
         this.resetSliderSize();
         this.newPosition = this.startPosition + diff;
         this.setPosition(this.newPosition);
@@ -88,29 +89,35 @@ export default {
       window.removeEventListener("mousemove", this.onDraging);
       window.removeEventListener("mouseup", this.onDragEnd);
     },
-    onClickJump: function(event) {},
+    onClickJump: function(event) {
+      let offsetLeft = this.$refs.slider.getBoundingClientRect().left;
+      this.setPosition(((event.clientX - offsetLeft) / this.sliderSize) * 100);
+    },
     setPosition: function(newPostion) {
       if (newPostion < 0) {
         newPostion = 0;
       } else if (newPostion > 100) {
         newPostion = 100;
       }
-      let lengthPerSteps = 100 / (100 / this.steps);
+      let lengthPerSteps = 100 / ((this.max - this.min) / this.steps);
       let steps = newPostion / lengthPerSteps;
-      let value = steps * lengthPerSteps * 100 * 0.01;
-      this.value=value;
+      let value =
+        steps * lengthPerSteps * (this.max - this.min) * 0.01 + this.min;
+      this.value = value.toFixed(0);
       this.oldValue = value;
     },
-    resetSliderSize:function(){
-      this.sliderSize = this.$refs.slider[`client${ this.vertical ? 'Height' : 'Width' }`];
+    resetSliderSize: function() {
+      this.sliderSize = this.$refs.slider[
+        `client${this.vertical ? "Height" : "Width"}`
+      ];
     }
   },
-  mounted(){
+  mounted() {
     this.resetSliderSize();
-    window.addEventListener('resize', this.resetSliderSize);
+    window.addEventListener("resize", this.resetSliderSize);
   },
-  beforeDestroy(){
-      window.removeEventListener('resize', this.resetSliderSize);
+  beforeDestroy() {
+    window.removeEventListener("resize", this.resetSliderSize);
   }
 };
 /**
