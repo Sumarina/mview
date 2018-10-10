@@ -22,12 +22,13 @@
 ::: demo
 
 ```html
-<div class="demo-block">
+<div class="demo-block" >
 <m-slider   />
 <script>
   export default {
     data() {
         return {
+          
         }
 
     }

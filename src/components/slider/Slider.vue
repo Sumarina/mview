@@ -1,5 +1,5 @@
 <template>
-    <div class="m-slider">
+    <div class="m-slider" ref="slider">
         <div class="m-slider__left" :style="barStyle" @click="onClickJump"></div>
         <div class="m-slider__background" @click="onClickJump"></div>
         <div class="m-slider__wrapper" @mousedown="mousedown"  :style="{left:currentPosition}">
@@ -16,46 +16,48 @@ import { setTimeout, clearTimeout } from "timers";
 export default {
   name: "MSlider",
   props: {
-    defaultValue: {
+    defalutValue: {
       type: Number,
-      default: 5
+      default: 0
     },
     isVertical: {
       //if the slider is vertical
       type: Boolean,
       default: false
+    },
+    steps: {
+      type: Number,
+      default: 1
+    },
+    min:{
+      type:Number,
+      default:0
+    },
+    max:{
+      type:Number,
+      default:100
     }
   },
   data() {
     return {
+      vertical:false,
       draging: false,
       startX: 0,
-      currentX: 0,
       startPosition: 0,
       newPosition: 0,
-      oldValue: this.defaultValue
+      oldValue: this.defalutValue,
+      value:this.defalutValue,
+      sliderSize:1
     };
   },
   computed: {
-    max: function() {
-      return 100;
-    },
-    min: function() {
-      return 0;
-    },
     currentPosition: function() {
-      return `${(this.defaultValue - this.min) / (this.max - this.min) * 100}%`;
-    },
-    barSize: function() {
-      return `${(this.defaultValue - this.min) / (this.max - this.min) * 100}%`;
-    },
-    barStart: function() {
-      return `0%`;
+      return `${((this.value-this.min) / (this.max-this.min)) * 100}%`;
     },
     barStyle: function() {
       return {
-        width: this.barSize,
-        left: this.barStart
+        width: this.currentPosition,
+        top: 0
       };
     }
   },
@@ -68,24 +70,47 @@ export default {
     },
     onDragStart: function(event) {
       this.draging = true; //start draging
-      if (this.isVertical) {
-      } else {
-        this.startX = event.clientX;
-        console.log("startX", this.startX);
-      }
-      this.startPosition=parseFloat(this.currentPosition);
-      this.newPosition=this.startPosition;
+      this.startX=event.clientX;
+      this.startPosition = parseFloat(this.currentPosition);
+      this.newPosition = this.startPosition;      
     },
     onDraging: function(event) {
-      this.currentX = event.clientX;
-      console.log(this.startX, this.currentX, this.barSize, this.barStart);
+      if (this.draging) {
+        let clientX = event.clientX;
+        let diff = (clientX - this.startX)/this.sliderSize*100;
+        this.resetSliderSize();
+        this.newPosition = this.startPosition + diff;
+        this.setPosition(this.newPosition);
+      }
     },
     onDragEnd: function(event) {
-      console.log("ondragend");
+      this.draging = false;
       window.removeEventListener("mousemove", this.onDraging);
       window.removeEventListener("mouseup", this.onDragEnd);
     },
-    onClickJump: function(event) {}
+    onClickJump: function(event) {},
+    setPosition: function(newPostion) {
+      if (newPostion < 0) {
+        newPostion = 0;
+      } else if (newPostion > 100) {
+        newPostion = 100;
+      }
+      let lengthPerSteps = 100 / (100 / this.steps);
+      let steps = newPostion / lengthPerSteps;
+      let value = steps * lengthPerSteps * 100 * 0.01;
+      this.value=value;
+      this.oldValue = value;
+    },
+    resetSliderSize:function(){
+      this.sliderSize = this.$refs.slider[`client${ this.vertical ? 'Height' : 'Width' }`];
+    }
+  },
+  mounted(){
+    this.resetSliderSize();
+    window.addEventListener('resize', this.resetSliderSize);
+  },
+  beforeDestroy(){
+      window.removeEventListener('resize', this.resetSliderSize);
   }
 };
 /**
