@@ -1,0 +1,36 @@
+<template>
+    <div class="m-tooltip" :class="isActive">
+        <span class="m-tooltip__top m-tooltip__top--left">
+            {{value}}
+        </span>
+    </div>
+</template>
+
+<script>
+import './Tooltip.css';
+
+export default {
+    name:"MTooltip",
+    props:{
+        value:Number,
+        isHover:{
+            type:Boolean,
+            default:false
+        }
+    },
+    data(){
+        return {
+            
+        }
+    },
+    computed:{
+        isActive:function(){
+            return !!this.isHover?'show':'hide';
+        }
+    } 
+}
+</script>
+
+<style>
+
+</style>

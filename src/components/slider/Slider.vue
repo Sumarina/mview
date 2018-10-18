@@ -2,11 +2,11 @@
     <div class="m-slider" ref="slider">
         <div class="m-slider__left" :style="barStyle" @click="onClickJump"></div>
         <div class="m-slider__background" @click="onClickJump"></div>
-        <div class="m-slider__wrapper" @mousedown="mousedown"  :style="{left:currentPosition}">
+        <div class="m-slider__wrapper" @mouseover="mouseover" @mouseout="mouseout" @mousedown="mousedown"  :style="{left:currentPosition}">
           <div class="m-slider__wrapper--point">
           </div>
+          <m-tooltip :value="value" :isHover="isHover"></m-tooltip>
         </div>
-        {{value}}
     </div>
 </template>
 
@@ -48,7 +48,8 @@ export default {
       newPosition: 0,
       oldValue: this.defalutValue,
       value: this.defalutValue,
-      sliderSize: 1
+      sliderSize: 1,
+      isHover:false
     };
   },
   computed: {
@@ -63,21 +64,29 @@ export default {
     }
   },
   methods: {
+    mouseover:function(){
+      this.isHover=true;
+    },
+    mouseout:function(){
+      this.isHover=false;
+    },
     mousedown: function(event) {
       event.preventDefault();
       this.onDragStart(event);
+      //register event
       window.addEventListener("mousemove", this.onDraging);
       window.addEventListener("mouseup", this.onDragEnd);
     },
     onDragStart: function(event) {
       this.draging = true; //start draging
-      this.startX = event.clientX;
-      this.startPosition = parseFloat(this.currentPosition);
+      this.startX = event.clientX; //get start clientX
+      this.startPosition = parseFloat(this.currentPosition);//convert the string to number
       this.newPosition = this.startPosition;
     },
     onDraging: function(event) {
       if (this.draging) {
         let clientX = event.clientX;
+        //compute the diff of draging.
         let diff = ((clientX - this.startX) / this.sliderSize) * 100;
         this.resetSliderSize();
         this.newPosition = this.startPosition + diff;
@@ -99,12 +108,15 @@ export default {
       } else if (newPostion > 100) {
         newPostion = 100;
       }
+      //compute the length of one step.
       let lengthPerSteps = 100 / ((this.max - this.min) / this.steps);
+      //the counts of step
       let steps = newPostion / lengthPerSteps;
+      //get value,means current position
       let value =
         steps * lengthPerSteps * (this.max - this.min) * 0.01 + this.min;
-      this.value = value.toFixed(0);
-      this.oldValue = value;
+      this.value = parseInt(value.toFixed(0));
+      this.oldValue = this.value;
     },
     resetSliderSize: function() {
       this.sliderSize = this.$refs.slider[

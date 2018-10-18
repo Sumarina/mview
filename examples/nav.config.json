@@ -45,7 +45,13 @@
           "desc":"slider",
           "name":"slider",
           "path":"/slider"
+        },
+        {
+          "desc":"tooltip",
+          "name":"tooltip",
+          "path":"/tooltip"
         }
+        
       ]
     
     }
