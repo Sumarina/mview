@@ -5,6 +5,7 @@ import MTable from './table';
 import MPagination from './pagination';
 import MSlider from './slider';
 import MTooltip from './tooltip';
+import MNotification from './notification';
 
 
 const components = [
@@ -15,7 +16,8 @@ const components = [
   MTable,
   MPagination,
   MSlider,
-  MTooltip
+  MTooltip,
+  MNotification
 ];
 
 const install = function (Vue) {
@@ -36,5 +38,6 @@ export default {
   MPagination,
   MSlider,
   MTooltip,
+  MNotification,
   MOption:MSelect.MOption
 }

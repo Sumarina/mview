@@ -50,6 +50,11 @@
           "desc":"tooltip",
           "name":"tooltip",
           "path":"/tooltip"
+        },
+        {
+          "desc":"notification通知",
+          "name":"notification",
+          "path":"/notification"
         }
         
       ]
