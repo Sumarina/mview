@@ -2,24 +2,26 @@
     <div class="m-paging">
         <!-- <span class="m-paging__total">共{{totalPageNumber}}页</span> -->
         <ul class="m-paging__pager">
-            <li class="m-paging__pager--pre" @click="onPageTurn(currentPage-1)">前翻页</li>
+            <li class="m-paging__pager--pre" @click="onPageTurn(currentPage-1)">
+              <font-awesome-icon icon="chevron-left"></font-awesome-icon>
+            </li>
             <li class="m-paging__pager--number" :class="{active:currentPage===item.value}" v-for="(item,index ) in pageNumberArr" :key="index" @click="onPageTurn(item)">
                 {{item.type==='ellipsis'?'...':item.value}}
             </li>
-            <li class="m-paging__pager--next" @click="onPageTurn(currentPage+1)">后翻页</li>
+            <li class="m-paging__pager--next" @click="onPageTurn(currentPage+1)">
+              <font-awesome-icon icon="chevron-right"></font-awesome-icon>
+            </li>
         </ul>
         <span class="m-paging__jump">
         前往
         <input class="m-paging__jump--number" type="text" v-model.number="currentPage" @input="jumpPage(currentPage)">
         页
         </span>
-        
     </div>
 </template>
 
 <script>
 import "./Pagination.css";
-import { types } from "util";
 export default {
   name: "MPagination",
   props: {

@@ -3,7 +3,6 @@
         white-space:nowrap;
         padding:2px 5px;
         color:#303133;
-        font-weight:700;
 
         @e total{
             margin-right:10px;
@@ -20,6 +19,10 @@
             @m pre{
                 display:inline-block;
                 cursor:pointer;
+                color:#cdcdcd;
+                &:hover{
+                    color:#636363;
+                }
             }
             @m number{
                 display:inline-block;
@@ -41,6 +44,10 @@
             @m next{
                 display:inline-block;
                 cursor:pointer;
+                color:#cdcdcd;
+                &:hover{
+                    color:#636363;
+                }
             }
             & .active{
                 color:#ffffff;
