@@ -1,7 +1,7 @@
 <template>
     <div class="m-tooltip" :class="isActive">
         <span class="m-tooltip__top m-tooltip__top--left">
-            {{value}}
+            progress
         </span>
     </div>
 </template>
@@ -12,7 +12,6 @@ import './Tooltip.css';
 export default {
     name:"MTooltip",
     props:{
-        value:Number,
         isHover:{
             type:Boolean,
             default:false

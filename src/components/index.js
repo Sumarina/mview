@@ -6,6 +6,7 @@ import MPagination from './pagination';
 import MSlider from './slider';
 import MTooltip from './tooltip';
 import MNotification from './notification';
+import MProgress from './progress';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCheckCircle,faExclamationCircle,faTimesCircle,faTimes,faChevronLeft,faChevronRight} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -22,6 +23,7 @@ const components = [
   MSlider,
   MTooltip,
   MNotification,
+  MProgress,
   FontAwesomeIcon
 ];
 
@@ -44,6 +46,7 @@ export default {
   MSlider,
   MTooltip,
   MNotification,
+  MProgress,
   FontAwesomeIcon,
   MOption:MSelect.MOption
 }

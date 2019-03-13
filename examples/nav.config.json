@@ -55,6 +55,11 @@
           "desc":"notification通知",
           "name":"notification",
           "path":"/notification"
+        },
+        {
+          "desc":"progress 进度条",
+          "name":"progress",
+          "path":"/progress"
         }
         
       ]
