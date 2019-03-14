@@ -16,6 +16,21 @@
             border-radius:4px;
             background-color:#b2cf07;
             position:absolute;
+            @m text{
+                position:absolute;
+                right:12px;
+                color:#fff;
+            }
+        }
+    }
+    @b progress-circle{
+        display:inline-block;
+        width:180px;
+        height:180px;
+        vertical-align:middle;
+        @e canvas{
+            width:160px;
+            height:160px;
         }
     }
     @b progress-text{
