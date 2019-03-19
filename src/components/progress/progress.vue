@@ -11,8 +11,8 @@
 
         <div class="m-progress-circle" v-if="!isBar">
              <canvas id="circle" width="160" height="160" class="m-progress-circle__canvas"></canvas>
+             <div class="m-progress-circle__text">{{width}}</div>
         </div>
-        <div class="m-progress-text" v-if="!textInside">{{width}}</div>
     </div>
 </template>
 
@@ -57,7 +57,6 @@ export default {
         }
     },
     mounted:function(){
-        
         !this.isBar&&this.drawCircleProcess(this.percent);
     },
     methods:{
@@ -93,6 +92,11 @@ export default {
             context.fillStyle="#ffffff";
             context.fill();
 
+        },
+    },
+    watch:{
+        percent:function(newval,oldval){
+            !this.isBar&&this.drawCircleProcess(newval);
         }
     }
 }

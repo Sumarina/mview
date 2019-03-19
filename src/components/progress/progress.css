@@ -25,12 +25,18 @@
     }
     @b progress-circle{
         display:inline-block;
-        width:180px;
-        height:180px;
-        vertical-align:middle;
+        width:160px;
+        height:160px;
+        position:relative;
         @e canvas{
             width:160px;
             height:160px;
+        }
+        @e text{
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
         }
     }
     @b progress-text{
