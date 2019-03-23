@@ -1,0 +1,8 @@
+@import '../../assets/css/var.scss';
+
+@component-namespace m {
+    @b row {
+        position:relative;
+        box-sizing:border-box;
+    }
+}

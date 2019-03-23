@@ -2,13 +2,15 @@ import MSwitch from './switch';
 import MButton from './button';
 import MSelect from './select';
 import MIcon from './icon';
+import MRow  from './row';
 
 const components = [
   MSwitch,
   MButton,
   MSelect,
   MSelect.MOption,
-  MIcon
+  MIcon,
+  MRow
 ];
 
 const install = function (Vue) {
@@ -26,5 +28,6 @@ export default {
   MButton,
   MSelect,
   MOption:MSelect.MOption,
-  MIcon
+  MIcon,
+  MRow
 }

@@ -34,6 +34,7 @@
   <m-button type="danger" circle>
     <m-icon icon="flag"></m-icon>
   </m-button>
+  <m-row gutter="20"></m-row>
 </div>
 
   
