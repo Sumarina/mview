@@ -17,7 +17,9 @@ module.exports = {
 		    }
     },
     "precss":{},
-    "postcss-import": {},
+		"postcss-import": {},
+		"postcss-color-function":{},
+		"postcss-sass-color-functions":{},
     "postcss-url": {},
     'postcss-short': {},
     // to edit target browsers: use "browserslist" field in package.json

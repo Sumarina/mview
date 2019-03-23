@@ -1,0 +1,108 @@
+@import '../../assets/css/var.scss';
+
+@component-namespace m {
+    @b button {
+        display:inline-block;
+        width:auto;
+        line-height:1;
+        white-space:nowrap;
+        cursor:pointer;
+        background-color:$color-white;
+        color:$btn-primary-color;
+        text-align:center;
+        box-sizing:border-box;
+        outline:none;
+        margin:0;
+        transition:0.1s linear;
+        font-weight:500;
+        padding:12px 20px;
+        border-radius:4px;
+        border: 1px solid $btn-primary-bdcolor;
+        @m default {
+            &:hover {
+                color:$btn-plain-font;
+                background-color:$btn-plain-bg;
+                border-color:$btn-plain-bd;
+            }
+            &.is-plain {
+                &:hover {
+                    color:$btn-plain-font;
+                    border-color:$btn-plain-font;
+                    background-color:$color-white;
+                }
+            }
+        }
+        @m primary {
+            background-color:$btn-primary-bgcolor;
+            color:$color-white;
+            &.is-plain {
+                color:$btn-plain-font;
+                background-color:$btn-plain-bg;
+                border-color:$btn-plain-bd;
+                &:hover {
+                    background-color:$btn-plain-font;
+                    color:$color-white;
+                }
+            }
+        }
+        @m success {
+            background-color:$color-success;
+            color:$color-white;
+            &.is-plain {
+                color:$btn-plain-succ-font;
+                background-color:$btn-plain-succ-bg;
+                border-color:$btn-plain-succ-bd;
+                &:hover {
+                    background-color:$btn-plain-succ-font;
+                    color:$color-white;
+                }
+            }
+        }
+        @m warn {
+            background-color:$color-warn;
+            color:$color-white;
+            &.is-plain {
+                color:$btn-plain-warn-font;
+                background-color:$btn-plain-warn-bg;
+                border-color:$btn-plain-warn-bd;
+                &:hover {
+                    background-color:$btn-plain-warn-font;
+                    color:$color-white;
+                }
+            }
+        }
+        @m info {
+            background-color:$color-info;
+            color:$color-white;
+            &.is-plain {
+                color:$btn-plain-info-font;
+                background-color:$btn-plain-info-bg;
+                border-color:$btn-plain-info-bd;
+                &:hover {
+                    background-color:$btn-plain-info-font;
+                    color:$color-white;
+                }
+            }
+        }
+        @m danger {
+            background-color:$color-danger;
+            color:$color-white;
+            &.is-plain {
+                color:$btn-plain-danger-font;
+                background-color:$btn-plain-danger-bg;
+                border-color:$btn-plain-danger-bd;
+                &:hover {
+                    background-color:$btn-plain-danger-font;
+                    color:$color-white;
+                }
+            }
+        }
+        @when round {
+            border-radius:20px;
+        }
+        @when circle {
+            border-radius:50%;
+            padding:12px;
+        }
+    }
+}
