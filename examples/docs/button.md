@@ -24,12 +24,16 @@
   <m-button type="info" round> 信息按钮</m-button>
   <m-button type="danger" round> 危险按钮</m-button>
   <br>
-  <m-button circle>默认按钮</m-button>
-  <m-button type="primary" circle> 主要按钮</m-button>
-  <m-button type="success" circle> 成功按钮</m-button>
-  <m-button type="warn" circle> 警告按钮</m-button>
-  <m-button type="info" circle> 信息按钮</m-button>
-  <m-button type="danger" circle> 危险按钮</m-button>
+  <m-button circle>
+    <m-icon icon="search" color="dark"></m-icon>
+  </m-button>
+  <m-button type="primary" circle icon='edit'></m-button>
+  <m-button type="success" circle icon="enter"></m-button>
+  <m-button type="warn" circle icon="notice"></m-button>
+  <m-button type="info" circle icon="info"></m-button>
+  <m-button type="danger" circle>
+    <m-icon icon="flag"></m-icon>
+  </m-button>
 </div>
 
   

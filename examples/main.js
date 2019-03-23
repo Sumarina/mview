@@ -5,7 +5,7 @@ import App from './App'
 import router from './router'
 import demoBlock from './components/demo-block.vue'
 import MView from '../src/components';
-
+import '../src/icons';
 Vue.component('demo-block', demoBlock)
 Vue.use(MView)
 

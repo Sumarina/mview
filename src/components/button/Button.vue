@@ -13,19 +13,24 @@
         {'is-circle':circle}
       ]"
       @click="handleClick">
-      <i v-if='icon' class="m-button__icon" :class="['m-icon'+icon]">
+      <!-- <i v-if='icon' class="m-button__icon" :class="['m-icon--'+icon]">
         <svg>
           <use :xlink:href="['#m-icon--' + icon]"></use>
         </svg>
-      </i>
+      </i> -->
+      <m-icon v-if="icon" :icon="icon"></m-icon>
       <slot></slot>
     </button>
 </template>
 
 <script>
 import './button.css';
+import mIcon from '../icon';
 export default {
   name: "MButton",
+  components:{
+    mIcon
+  },
   props: {
     type: {
       type: String,

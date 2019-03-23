@@ -1,6 +1,58 @@
 @import '../../assets/css/var.scss';
+
 @component-namespace m {
-    @b icon {
-        
+  @b icon {
+    display: inline-block;
+    width: $icon-size;
+    height: $icon-size;
+    vertical-align: middle;
+
+    &>svg {
+      width: $icon-size;
+      height: $icon-size;
+      fill: $color-white;
     }
+    &--xs {
+        width: $icon-size-xs;
+        height: $icon-size-xs;
+  
+        & > svg {
+          width: $icon-size-xs;
+          height: $icon-size-xs;
+        }
+    }
+    &--md {
+      width: $icon-size-md;
+      height: $icon-size-md;
+
+      & > svg {
+        width: $icon-size-md;
+        height: $icon-size-md;
+      }
+    }
+    &--sm {
+      width: $icon-size-sm;
+      height: $icon-size-sm;
+
+      & > svg {
+        width: $icon-size-sm;
+        height: $icon-size-sm;
+      }
+
+      &--lg {
+        width: $icon-size-lg;
+        height: $icon-size-lg;
+
+        & > svg {
+          width: $icon-size-lg;
+          height: $icon-size-lg;
+        }
+      }
+    }
+    &--dark {
+        & > svg {
+            fill:#999;
+        }
+    }
+  }
 }
