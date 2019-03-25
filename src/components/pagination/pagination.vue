@@ -1,71 +1,212 @@
 <template>
     <div class="m-paging">
-        <span class="m-paging__total">共{{totalPageNumber}}页</span>
+        <!-- <span class="m-paging__total">共{{totalPageNumber}}页</span> -->
         <ul class="m-paging__pager">
-            <li class="m-paging__pager--pre" @click="selectPage(currentPageNumber-1)">前翻页</li>
-            <li class="m-paging__pager--number" @click="selectPage(number)" :class="{active:currentPageNumber===number}" v-for="number in pageNumber">
-                {{number}}
+            <li class="m-paging__pager--pre" @click="onPageTurn(currentPage-1)">
+              <font-awesome-icon icon="chevron-left"></font-awesome-icon>
             </li>
-            <li class="m-paging__pager--next" @click="selectPage(currentPageNumber+1)">后翻页</li>
+            <li class="m-paging__pager--number" :class="{active:currentPage===item.value}" v-for="(item,index ) in pageNumberArr" :key="index" @click="onPageTurn(item)">
+                {{item.type==='ellipsis'?'...':item.value}}
+            </li>
+            <li class="m-paging__pager--next" @click="onPageTurn(currentPage+1)">
+              <font-awesome-icon icon="chevron-right"></font-awesome-icon>
+            </li>
         </ul>
         <span class="m-paging__jump">
         前往
-        <input class="m-paging__jump--number" type="text" v-model.number="jumpNumber" @blur="selectPage(jumpNumber)">
+        <input class="m-paging__jump--number" type="text" v-model.number="currentPage" @input="jumpPage(currentPage)">
         页
         </span>
-        
     </div>
 </template>
 
 <script>
-import "./pagination.css";
+import "./Pagination.css";
 export default {
-  name: "mPagination",
+  name: "MPagination",
   props: {
-    dataCount: Number,
-    //设置每页显示最大多少条数据
-    dataLimit: {
+    pageSize: {
       type: Number,
       default: 10
     },
-    //是否显示分页操作区域 默认显示
-    showPaging: {
-      type: Boolean,
-      default: true
-    },
-    //设置分页从第几页开始展示
-    pageOffset: {
+    total: Number,
+    pageCount: {
       type: Number,
-      default: 1
+      default: 7
     },
-    //显示当前的分页按钮的数量 默认为5
-    pageNumberLimit: {
+    defaultPage: {
       type: Number,
-      default: 5
-    },
-    //选择分页后的回调事件 params=pageNumber
-    afterSelectPage: Function
+      default: 60
+    }
   },
   data() {
     return {
-      currentPageNumber: this.pageOffset,
-      totalPageNumber: this.dataCount,
-      jumpNumber:1
+      pageNumberArr: [],
+      currentPage: this.defaultPage
     };
   },
   computed: {
-    pageNumber() {
-      return this.dataCount < this.pageNumberLimit
-        ? this.dataCount
-        : this.pageNumberLimit;
+    pageNumbers() {
+      return Math.ceil(this.total / this.pageSize);
     }
   },
+  mounted: function() {
+    this.pageNumberArr = this.computePageNumberArr();
+  },
   methods: {
-    selectPage: function(index) {
-      if (index <= this.dataCount && index >= 1) {
-        this.currentPageNumber = index;
-        this.afterSelectPage(index);
+    jumpPage: function(value) {
+      this.currentPage = value;
+      this.pageNumberArr = this.computePageNumberArr();
+    },
+    onPageTurn: function(item) {
+      let type = Object.prototype.toString.call(item);
+      if (type.indexOf("Number") != -1) {
+        let _flag = false;
+        if (item < 1 || item > this.pageNumbers) {
+          return;
+        }
+        this.currentPage = item;
+        for (let i of this.pageNumberArr) {
+          if (i["value"] === item) {
+            _flag = true;
+            break;
+          }
+        }
+        if (!_flag) {
+          this.pageNumberArr = this.computePageNumberArr();
+        }
+        return;
       }
+
+      let _value = item["value"];
+      let _type = item["type"];
+      /**
+       * the item of current click ,it's an object that own three custom property.
+       * if the property type of this item is 'ellispsi', means this item is ellipsis.we need to get a new pageNumberArr.
+       * if the property type is 'number',means this item is number,it's needn't to get pageNumberArr.
+       */
+      if (_type === "number") {
+        if (_value === 1 || _value === this.pageNumbers) {
+          this.currentPage = item["value"];
+          this.pageNumberArr = this.computePageNumberArr();
+        } else {
+          this.currentPage = item["value"];
+        }
+      } else {
+        if (_value < this.currentPage) {
+          this.currentPage =
+            this.currentPage - Math.ceil(this.pageCount / 2) - 1;
+        } else {
+          this.currentPage =
+            this.currentPage + Math.ceil(this.pageCount / 2) + 1;
+        }
+        this.pageNumberArr = this.computePageNumberArr();
+      }
+    },
+    computePageNumberArr: function() {
+      let arr = [],
+        element = {
+          index: 1, //下标
+          value: 1, //数值
+          type: "number" //type number or ellipsis
+        },
+        _currentPage = this.currentPage; //current page number
+
+      const LASTPAGENUM = this.pageNumbers; //last number
+      const PAGECOUNT = this.pageCount; // the count is that show pagenumbers
+
+      /**
+       * first,if last pagenumber less than pagecount ,it's means we have no need to ellipsis.
+       * second,if current page less than pagecount or more than last pagenumber minus pagecount ,it's means we only one ellipsis
+       * finally,we need two ellipsis.
+       */
+      if (LASTPAGENUM <= PAGECOUNT) {
+        //if last pagenum < pagecount
+        for (let i = 1; i <= LASTPAGENUM; i++) {
+          arr.push({
+            index: i,
+            value: i,
+            type: "number"
+          });
+        }
+      } else if (_currentPage <= PAGECOUNT - 1) {
+        for (let i = 1; i <= PAGECOUNT; i++) {
+          let type = "number";
+          if (i === PAGECOUNT) {
+            type = "ellipsis";
+          }
+          arr.push({
+            index: i,
+            value: i,
+            type: type
+          });
+        }
+        arr.push({
+          index: PAGECOUNT + 1,
+          value: LASTPAGENUM,
+          type: "number"
+        });
+      } else if (_currentPage > LASTPAGENUM - PAGECOUNT) {
+        arr.push({
+          index: 1,
+          value: 1,
+          type: "number"
+        });
+        arr.push({
+          index: 2,
+          value: 2,
+          type: "ellipsis"
+        });
+
+        for (let i = PAGECOUNT - 2; i >= 0; i--) {
+          let type = "number";
+          arr.push({
+            index: i,
+            value: LASTPAGENUM - i,
+            type: type
+          });
+        }
+      } else {
+        arr.push({
+          index: 1,
+          value: 1,
+          type: "number"
+        });
+        arr.push({
+          index: 2,
+          value: 2,
+          type: "ellipsis"
+        });
+
+        let middleIndex = Math.ceil((PAGECOUNT - 2) / 2);
+
+        for (let i = middleIndex; i >= 1; i--) {
+          arr.push({
+            index: 2 + i,
+            value: _currentPage - i + 1,
+            type: "number"
+          });
+        }
+        for (let i = 1; i <= PAGECOUNT - 2 - middleIndex; i++) {
+          arr.push({
+            index: 2 + middleIndex + i,
+            value: _currentPage + i,
+            type: "number"
+          });
+        }
+
+        arr.push({
+          index: PAGECOUNT + 1,
+          value: LASTPAGENUM - 1,
+          type: "ellipsis"
+        });
+        arr.push({
+          index: PAGECOUNT + 2,
+          value: LASTPAGENUM,
+          type: "number"
+        });
+      }
+      return arr;
     }
   }
 };

@@ -1,0 +1,58 @@
+@component-namespace m {
+  @b notice {
+    position: fixed;
+    right: 16px;
+    top: 16px;
+    z-index: 9999;
+
+    @e wrap {
+      border: 1px solid #ebeef5;
+      border-radius: 8px;
+      background: #ffffff;
+      box-shadow: 2px 3px 8px #ececec;
+      width: 330px;
+      height: 80px;
+      padding: 2px 6px;
+      box-sizing: border-box;
+      margin-bottom:16px;
+      position:relative;
+
+      @m title {
+        padding-left: 20px;
+        font-size: 18px;
+        color: #2c2c2c;
+        height: 30px;
+        line-height: 30px;
+        & .success {
+          color: #31a354;
+        }
+        & .error {
+          color: #f56c6c;
+        }
+        & .warning {
+          color: #e6a23c;
+        }
+        & .info {
+          color: #636363;
+        }
+      }
+      @m content {
+        padding-left: 20px;
+        height: 50px;
+        line-height: 30px;
+        color:#3f536e;
+      }
+      @m close {
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        &:hover {
+          cursor: pointer;
+        }
+        & .close {
+          color: #909399;
+        }
+      }
+    }
+  }
+}

@@ -3,7 +3,6 @@
         white-space:nowrap;
         padding:2px 5px;
         color:#303133;
-        font-weight:700;
 
         @e total{
             margin-right:10px;
@@ -20,6 +19,10 @@
             @m pre{
                 display:inline-block;
                 cursor:pointer;
+                color:#cdcdcd;
+                &:hover{
+                    color:#636363;
+                }
             }
             @m number{
                 display:inline-block;
@@ -31,10 +34,20 @@
                 color:#bbbbbb;
                 cursor:pointer;
                 margin:0 5px;
+                &.more{
+                    &:before{
+                        content:"\E646";
+                        line-height:30px;
+                    }
+                }
             }
             @m next{
                 display:inline-block;
                 cursor:pointer;
+                color:#cdcdcd;
+                &:hover{
+                    color:#636363;
+                }
             }
             & .active{
                 color:#ffffff;
@@ -44,7 +57,16 @@
         }
         @e jump{
             @m number{
-
+                width:48px;
+                height:28px;
+                border-radius:4px;
+                padding:0 3px;
+                outline:none;
+                border:1px solid #dcdfed;
+                text-align:center;
+                &:focus{
+                    outline:none;
+                }
             }
         }
     }

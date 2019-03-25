@@ -30,7 +30,38 @@
           "desc":"Switch 按钮",
           "name":"switch",
           "path":"/switch"
+        },
+        {
+          "desc":"table",
+          "name":"table",
+          "path":"/table"
+        },
+        {
+          "desc":"分页",
+          "name":"pagination",
+          "path":"/pagination"
+        },
+        {
+          "desc":"slider",
+          "name":"slider",
+          "path":"/slider"
+        },
+        {
+          "desc":"tooltip",
+          "name":"tooltip",
+          "path":"/tooltip"
+        },
+        {
+          "desc":"notification通知",
+          "name":"notification",
+          "path":"/notification"
+        },
+        {
+          "desc":"progress 进度条",
+          "name":"progress",
+          "path":"/progress"
         }
+        
       ]
     
     }

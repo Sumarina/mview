@@ -1,0 +1,55 @@
+%m-tooltip__top--common {
+  background: #000000;
+  color: #ffffff;
+  position: absolute;
+  display: block;
+  width: 36px;
+  height: 28px;
+  line-height: 28px;
+  bottom: 28px;
+  left: 0px;
+  border-radius: 4px;
+  cursor: default;
+  margin-bottom: 8px;
+  &:before {
+    content: "";
+    background: #000000;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+  }
+}
+%m-tooltip__hide {
+  visibility: hidden;
+  opacity: 0;
+}
+%m-tooltip__show {
+  visibility: visible;
+  opacity: 1;
+}
+@component-namespace m {
+  @b tooltip {
+    font-size: 12px;
+    position: relative;
+    
+    @e top {
+      @extend %m-tooltip__top--common;
+      @m left {
+        &:before {
+          bottom: -4px;
+          transform: rotate(45deg);
+        }
+      }
+      @m middle {
+      }
+      @m right {
+      }
+    }
+    &.show{
+        @extend %m-tooltip__show;
+    }
+    &.hide{
+        @extend %m-tooltip__hide;
+    }
+  }
+}
