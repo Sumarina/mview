@@ -1,0 +1,15 @@
+/* 
+* 这个文件主要存放一些常用公共样式 别的地方可以继承
+*/
+
+/** 清除浮动 */
+@define-extend clearfix {
+    zoom:1;
+    &:before,&:after {
+        content:"";
+        display:table;
+    }
+    &:after {
+        clear:both;
+    }
+}

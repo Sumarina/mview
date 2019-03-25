@@ -17,17 +17,22 @@
       "path": "/component",
       "items": [
         {
-          "desc": "select 选择器",
+          "desc": "Layout",
+          "name": "layout",
+          "path": "/layout"
+        },
+        {
+          "desc": "select",
           "name": "select",
           "path": "/select"
         },
         {
-          "desc": "Button 按钮",
+          "desc": "Button",
           "name": "button",
           "path": "/button"
         },
         {
-          "desc":"Switch 按钮",
+          "desc":"Switch",
           "name":"switch",
           "path":"/switch"
         },
@@ -37,7 +42,7 @@
           "path":"/table"
         },
         {
-          "desc":"分页",
+          "desc":"pagination",
           "name":"pagination",
           "path":"/pagination"
         },
@@ -52,12 +57,12 @@
           "path":"/tooltip"
         },
         {
-          "desc":"notification通知",
+          "desc":"notification",
           "name":"notification",
           "path":"/notification"
         },
         {
-          "desc":"progress 进度条",
+          "desc":"progress",
           "name":"progress",
           "path":"/progress"
         }

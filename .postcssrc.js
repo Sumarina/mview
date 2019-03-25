@@ -21,7 +21,7 @@ module.exports = {
 		"postcss-color-function":{},
 		"postcss-sass-color-functions":{},
     "postcss-url": {},
-    'postcss-short': {},
+		'postcss-short': {},
     // to edit target browsers: use "browserslist" field in package.json
     "autoprefixer": {}
   }

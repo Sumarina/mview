@@ -1,10 +1,12 @@
 'use strict'
 const path = require('path')
+const ExtractPlugin = require('extract-text-webpack-plugin')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 const MarkdownItContainer = require('markdown-it-container')
 const striptags = require('./strip-tags')
+
 
 
 
@@ -83,6 +85,18 @@ module.exports = {
         include: [resolve('examples'), resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
+        test: /\.(scss | css)$/,
+        use:[
+          'style-loader',
+          'css-loader',
+          {
+            loader:'postcss-loader',
+            options:{sourceMap:true}
+          },
+          'sass-loader'
+        ]
+      },
+      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         exclude:[path.resolve(__dirname,'../src/icons')],
@@ -124,6 +138,9 @@ module.exports = {
 
     ]
   },
+  plugins:[
+    new ExtractPlugin('[name].css')
+  ],
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
     // source contains it (although only uses it if it's native).
