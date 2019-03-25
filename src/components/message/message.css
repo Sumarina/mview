@@ -1,0 +1,12 @@
+@component-namespace m{
+    @b message{
+        @e wrap{
+            @m content{
+
+            }
+            @m close{
+                
+            }
+        }
+    }
+}

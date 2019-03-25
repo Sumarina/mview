@@ -60,6 +60,11 @@
           "desc":"progress 进度条",
           "name":"progress",
           "path":"/progress"
+        },
+        {
+          "desc":"message",
+          "name":"message",
+          "path":"/message"
         }
         
       ]
