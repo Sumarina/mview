@@ -45,11 +45,9 @@ export default {
   MSwitch,
   MButton,
   MSelect,
-<<<<<<< HEAD
   MOption:MSelect.MOption,
   MIcon,
-  MRow
-=======
+  MRow,
   MTable,
   MPagination,
   MSlider,
@@ -58,5 +56,4 @@ export default {
   MProgress,
   FontAwesomeIcon,
   MOption:MSelect.MOption
->>>>>>> 52cb9e5c3f3c0714d28923d11d8117cc1f9880ac
 }
