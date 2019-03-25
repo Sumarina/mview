@@ -30,11 +30,26 @@
                     border-color:$btn-plain-font;
                     background-color:$color-white;
                 }
+                &.is-disabled,&.is-disabled:hover,&.is-disabled:focus {
+                    color:lighten($btn-plain-font,40%);
+                    background-color:lighten($color-white,40%);
+                    border-color:lighten($btn-plain-font,40%);
+                    cursor: not-allowed;
+                }
+            }
+            &.is-disabled {
+                color:lighten($btn-primary-color,100%);
+                background-color:lighten($btn-plain-bg,40%);
+                border-color:lighten($btn-primary-color,100%);
+                cursor: not-allowed;
             }
         }
         @m primary {
             background-color:$btn-primary-bgcolor;
             color:$color-white;
+            &:hover {
+                background-color:lighten($btn-primary-bgcolor,8%);
+            }
             &.is-plain {
                 color:$btn-plain-font;
                 background-color:$btn-plain-bg;
@@ -43,11 +58,25 @@
                     background-color:$btn-plain-font;
                     color:$color-white;
                 }
+                &.is-disabled {
+                    color:lighten($btn-plain-font,30%);
+                    background-color:lighten($btn-plain-bg,2%);
+                    border-color:lighten($btn-plain-bd,15%);
+                    cursor: not-allowed;
+                }
+            }
+            &.is-disabled {
+                background-color:lighten($btn-primary-bgcolor,40%);
+                border-color:lighten($btn-primary-bgcolor,40%);
+                cursor: not-allowed;
             }
         }
         @m success {
             background-color:$color-success;
             color:$color-white;
+            &:hover {
+                background-color:lighten($color-success,8%);
+            }
             &.is-plain {
                 color:$btn-plain-succ-font;
                 background-color:$btn-plain-succ-bg;
@@ -56,11 +85,25 @@
                     background-color:$btn-plain-succ-font;
                     color:$color-white;
                 }
+                &.is-disabled {
+                    color:lighten($btn-plain-succ-font,45%);
+                    background-color:lighten($btn-plain-succ-bg,2%);
+                    border-color:lighten($btn-plain-succ-bg,0.5%);
+                    cursor: not-allowed;
+                }
+            }
+            &.is-disabled {
+                background-color:lighten($color-success,60%);
+                border-color:lighten($color-success,60%);
+                cursor: not-allowed;
             }
         }
         @m warn {
             background-color:$color-warn;
             color:$color-white;
+            &:hover {
+                background-color:lighten($color-warn,8%);
+            }
             &.is-plain {
                 color:$btn-plain-warn-font;
                 background-color:$btn-plain-warn-bg;
@@ -69,11 +112,25 @@
                     background-color:$btn-plain-warn-font;
                     color:$color-white;
                 }
+                &.is-disabled {
+                    color:lighten($btn-plain-warn-font,40%);
+                    background-color:lighten($btn-plain-warn-bg,1%);
+                    border-color:lighten($btn-plain-warn-bg,1%);
+                    cursor: not-allowed;
+                }
+            }
+            &.is-disabled {
+                background-color:lighten($color-warn,40%);
+                border-color:lighten($color-warn,40%);
+                cursor: not-allowed;
             }
         }
         @m info {
             background-color:$color-info;
             color:$color-white;
+            &:hover {
+                background-color:lighten($color-info,8%);
+            }
             &.is-plain {
                 color:$btn-plain-info-font;
                 background-color:$btn-plain-info-bg;
@@ -82,11 +139,25 @@
                     background-color:$btn-plain-info-font;
                     color:$color-white;
                 }
+                &.is-disabled {
+                    color:lighten($btn-plain-info-font,40%);
+                    background-color:lighten($btn-plain-info-bg,1%);
+                    border-color:lighten($btn-plain-info-bg,1%);
+                    cursor: not-allowed;
+                }
+            }
+            &.is-disabled {
+                background-color:lighten($color-info,40%);
+                border-color:lighten($color-info,40%);
+                cursor: not-allowed;
             }
         }
         @m danger {
             background-color:$color-danger;
             color:$color-white;
+            &:hover {
+                background-color:lighten($color-danger,8%);
+            }
             &.is-plain {
                 color:$btn-plain-danger-font;
                 background-color:$btn-plain-danger-bg;
@@ -95,6 +166,17 @@
                     background-color:$btn-plain-danger-font;
                     color:$color-white;
                 }
+                &.is-disabled {
+                    color:lighten($btn-plain-danger-font,20%);
+                    background-color:lighten($btn-plain-danger-bg,0.5%);
+                    border-color:lighten($btn-plain-danger-bg,1%);
+                    cursor: not-allowed;
+                }
+            }
+            &.is-disabled {
+                background-color:lighten($color-danger,20%);
+                border-color:lighten($color-danger,20%);
+                cursor: not-allowed;
             }
         }
         @when round {

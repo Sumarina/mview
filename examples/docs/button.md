@@ -90,3 +90,25 @@
   </m-row>
 ```
 :::
+
+### 禁用状态
+按钮不可用状态 disabled
+
+<div class="demo-block">
+<m-row>
+  <m-button disabled>默认按钮</m-button>
+  <m-button type="primary" disabled> 主要按钮</m-button>
+  <m-button type="success" disabled> 成功按钮</m-button>
+  <m-button type="warn" disabled> 警告按钮</m-button>
+  <m-button type="info" disabled> 信息按钮</m-button>
+  <m-button type="danger" disabled> 危险按钮</m-button>
+</m-row>
+<m-row>
+  <m-button palin disabled>默认按钮</m-button>
+  <m-button type="primary" plain disabled> 主要按钮</m-button>
+  <m-button type="success" plain disabled> 成功按钮</m-button>
+  <m-button type="warn" plain disabled> 警告按钮</m-button>
+  <m-button type="info" plain disabled> 信息按钮</m-button>
+  <m-button type="danger" plain disabled> 危险按钮</m-button>
+</m-row>
+</div>

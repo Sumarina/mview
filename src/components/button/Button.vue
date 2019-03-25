@@ -7,7 +7,7 @@
       :class="[
         type?'m-button--'+type:'',
         size?'m-button--'+type:'',
-        {'isDisabled':disabled},
+        {'is-disabled':disabled},
         {'is-plain':plain},
         {'is-round':round},
         {'is-circle':circle}
