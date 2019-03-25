@@ -3,6 +3,7 @@ import MButton from './button';
 import MSelect from './select';
 import MIcon from './icon';
 import MRow  from './row';
+import MCol from './col';
 import MTable from './table';
 import MPagination from './pagination';
 import MSlider from './slider';
@@ -22,6 +23,7 @@ const components = [
   MSelect.MOption,
   MIcon,
   MRow,
+  MCol,
   MTable,
   MPagination,
   MSlider,
@@ -48,6 +50,7 @@ export default {
   MOption:MSelect.MOption,
   MIcon,
   MRow,
+  MCol,
   MTable,
   MPagination,
   MSlider,
