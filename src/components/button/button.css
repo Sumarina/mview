@@ -1,4 +1,4 @@
-@import '../../assets/css/var.css';
+@import '../../assets/css/_var.css';
 
 @component-namespace m {
     @b button {

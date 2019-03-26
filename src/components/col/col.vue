@@ -2,7 +2,8 @@
     <div class="m-col"
         :span="span"
         :class="[
-            span?'m-col-'+span:''
+            span?'m-col-'+span:'',
+            offset?'m-col-offset-'+offset:''
         ]"
         :style="style"
     >
@@ -14,7 +15,8 @@ import './col.css';
 export default {
     name:'mCol',
     props:{
-        span:Number
+        span:Number,
+        offset:Number
     },
     computed:{
         style(){

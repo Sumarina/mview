@@ -47,6 +47,7 @@
     "portfinder": "^1.0.13",
     "postcss": "^5.2.16",
     "postcss-color-function": "^4.0.1",
+    "postcss-define-function": "^0.1.1",
     "postcss-for": "^2.1.1",
     "postcss-import": "^11.0.0",
     "postcss-inline-svg": "^3.1.1",

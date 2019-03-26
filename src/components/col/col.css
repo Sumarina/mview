@@ -1,14 +1,18 @@
-@import '../../assets/css/var.css';
-@import '../../assets/css/extend.css';
+@import '../../assets/css/_var.css';
+@import '../../assets/css/_placeholder.css';
 @import '../../assets/css/base.css';
 @component-namespace m {
     @b col {
         float:left;
         box-sizing:border-box;
-        
        @for $i from 1 through 24 {
            &-$i{
                width: calc($i / 24 *100%);
+           }
+       }
+       @for $i from 1 through 24 {
+           &-offset-$i {
+               margin-left: calc($i / 24 * 100%);
            }
        }
     }

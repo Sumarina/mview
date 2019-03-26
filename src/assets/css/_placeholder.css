@@ -1,0 +1,47 @@
+/* 
+* 这个文件主要存放一些常用公共样式 别的地方可以继承
+*/
+
+/** 清除浮动 */
+@define-extend clearfix {
+    zoom:1;
+    &:before,&:after {
+        content:"";
+        display:table;
+    }
+    &:after {
+        clear:both;
+    }
+}
+
+@define-extend clearfix{
+    clear: both;
+}
+/*文字超长省略号*/
+@define-extend pt-ellipsis {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}
+
+/*块元素-水平垂直居中*/
+@define-extend pt-center {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+/*块元素-水平居中*/
+@define-extend pt-horizontal {
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+/*块元素- 垂直方向居中*/
+@define-extend pt-vertical {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+}
