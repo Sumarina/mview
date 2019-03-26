@@ -36,8 +36,15 @@ $btn-plain-danger-font:#f56c6c;
 $btn-plain-danger-bg:#fef0f0;
 $btn-plain-danger-bd:#fbc4c4;
 
+$btn-font-default:14px;
+$btn-font-xs:12px;
+$btn-font-sm:13px;
+$btn-font-md:16px;
+$btn-font-lg:20px;
+
+
 $icon-size:18px;
-$icon-size-xs:14px;
-$icon-size-sm:12px;
+$icon-size-xs:12px;
+$icon-size-sm:14px;
 $icon-size-md:20px;
 $icon-size-lg:24px;

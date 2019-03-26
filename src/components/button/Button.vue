@@ -6,7 +6,7 @@
       :size = 'size'
       :class="[
         type?'m-button--'+type:'',
-        size?'m-button--'+type:'',
+        size?'m-button--'+size:'',
         {'is-disabled':disabled},
         {'is-plain':plain},
         {'is-round':round},
@@ -48,7 +48,7 @@ export default {
   },
   methods:{
       handleClick(event){
-          console.log(event);
+          // console.log(event);
           this.$emit('click',event);
       }
   }

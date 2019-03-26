@@ -2,13 +2,13 @@
     <i class="m-icon"
         :class="[
         icon?'m-icon--'+icon:'',
-        size?'m-icon--'+size:'',
-        color?'m-icon--'+color:''
+        size?'m-icon--'+size:''
+       
         ]"
         
         @click="click"
     >   
-        <svg>
+        <svg :style="style">
             <use :xlink:href="['#pt-icon--'+icon]"></use>
         </svg>
     </i>
@@ -23,11 +23,20 @@ export default {
             type:String,
             default:'md'
         },
-        color:String
+        color:String  // 目前只扩展了个dark
     },
     methods:{
         click:function(){
             this.$emit('click');
+        }
+    },
+    computed:{ 
+        style(){
+            var css = {};
+            if(this.color){
+                css.fill = this.color;
+            }
+            return css;
         }
     }
 }
