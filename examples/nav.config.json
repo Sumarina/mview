@@ -65,6 +65,11 @@
           "desc":"message",
           "name":"message",
           "path":"/message"
+        },
+        {
+          "desc":"datepicker",
+          "name":"datepicker",
+          "path":"/datepicker"
         }
         
       ]

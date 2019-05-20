@@ -8,6 +8,8 @@ import MTooltip from './tooltip';
 import MNotification from './notification';
 import MProgress from './progress';
 import MMessage from './message';
+import MDatepicker from './datepicker';
+
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCheckCircle,faExclamationCircle,faTimesCircle,faTimes,faChevronLeft,faChevronRight} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -26,6 +28,7 @@ const components = [
   MNotification,
   MProgress,
   MMessage,
+  MDatepicker,
   FontAwesomeIcon
 ];
 
@@ -52,6 +55,7 @@ export default {
   MNotification,
   MProgress,
   MMessage,
+  MDatepicker,
   FontAwesomeIcon,
   MOption:MSelect.MOption
 }
