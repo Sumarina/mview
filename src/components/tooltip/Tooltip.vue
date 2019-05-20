@@ -1,7 +1,7 @@
 <template>
     <div class="m-tooltip" :class="isActive">
         <span class="m-tooltip__top m-tooltip__top--left">
-            progress
+            {{value}}
         </span>
     </div>
 </template>
@@ -15,6 +15,10 @@ export default {
         isHover:{
             type:Boolean,
             default:false
+        },
+        value:{
+            type:Number,
+            default:0
         }
     },
     data(){
