@@ -9,6 +9,7 @@ import MNotification from './notification';
 import MProgress from './progress';
 import MMessage from './message';
 import MDatepicker from './datepicker';
+import MPopover from './popover';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCheckCircle, faExclamationCircle, faTimesCircle, faTimes, faChevronLeft, faChevronRight, faCalendarAlt, faAngleDoubleLeft, faAngleDoubleRight, faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
@@ -29,6 +30,7 @@ const components = [
   MProgress,
   MMessage,
   MDatepicker,
+  MPopover,
   FontAwesomeIcon
 ];
 
@@ -56,6 +58,7 @@ export default {
   MProgress,
   MMessage,
   MDatepicker,
+  MPopover,
   FontAwesomeIcon,
   MOption: MSelect.MOption
 }

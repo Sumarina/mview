@@ -70,6 +70,11 @@
           "desc":"datepicker",
           "name":"datepicker",
           "path":"/datepicker"
+        },
+        {
+          "desc":"popover 弹出框",
+          "name":"popover",
+          "path":"/popover"
         }
         
       ]
