@@ -11,10 +11,10 @@ import MMessage from './message';
 import MDatepicker from './datepicker';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCheckCircle,faExclamationCircle,faTimesCircle,faTimes,faChevronLeft,faChevronRight} from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faExclamationCircle, faTimesCircle, faTimes, faChevronLeft, faChevronRight, faCalendarAlt, faAngleDoubleLeft, faAngleDoubleRight, faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-library.add(faCheckCircle,faExclamationCircle,faTimesCircle,faTimes,faChevronLeft,faChevronRight);
+library.add(faCheckCircle, faExclamationCircle, faTimesCircle, faTimes, faChevronLeft, faChevronRight, faCalendarAlt, faAngleDoubleLeft, faAngleDoubleRight, faAngleLeft, faAngleRight);
 
 const components = [
   MSwitch,
@@ -57,5 +57,5 @@ export default {
   MMessage,
   MDatepicker,
   FontAwesomeIcon,
-  MOption:MSelect.MOption
+  MOption: MSelect.MOption
 }
