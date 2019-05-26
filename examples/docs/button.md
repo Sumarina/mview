@@ -3,11 +3,11 @@
 ### 基础用法
 
  <div class="demo-block">
-  <m-button >test button</m-button>
+  <m-button >button</m-button>
 </div>
 
 ::: demo
 ```html
- <m-button >test button</m-button>
+ <m-button >button</m-button>
 ```
 :::

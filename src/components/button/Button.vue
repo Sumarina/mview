@@ -1,10 +1,11 @@
 <template>
-    <button  @click="handleClick">
+    <button class="m-button"  @click="handleClick">
         <slot></slot>
     </button>
 </template>
 
 <script>
+import './Button.css';
 export default {
   name: "MButton",
   props: {
@@ -24,11 +25,5 @@ export default {
   }
 };
 </script>
-
-<style lang="postcss" scoped>
-    @b m-button{
-        
-    }
-</style>
 
 
