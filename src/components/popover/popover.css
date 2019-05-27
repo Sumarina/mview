@@ -1,5 +1,34 @@
 @component-namespace m{
     @b popover{
-        
+        position: relative;
+        @e title{
+            color: #303133;
+            font-size: 16px;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+        @e content{
+            border:1px solid #e4e7ed;
+            background:#ffffff;
+            top:50px;
+            border-radius:8px;
+            position: absolute;
+            min-width:150px;
+            box-shadow:0 2px 12px 0 rgba(0, 0, 0, 0.1);
+            line-height:1.4;
+            padding:20px;
+            box-sizing:border-box;
+        }
+        @e arrow{
+            width: 8px;
+            height: 8px;
+            border: 1px solid #e4e7ed;
+            position: absolute;
+            border-color: #e4e7ed #e4e7ed transparent transparent;
+            transform: rotate(-45deg);
+            top: -5px;
+            left: 20px;
+            background:#fff;
+        }
     }
 }
