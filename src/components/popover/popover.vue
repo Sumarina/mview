@@ -28,18 +28,27 @@ export default {
   mounted() {
     var _this = this;
     let reference = this.$slots.reference[0];
-    reference.elm.addEventListener("mouseenter", _this.MouseEnter);
-    reference.elm.addEventListener("mouseleave", _this.MouseLeave);
+    if (_this.trigger === "hover") {
+      reference.elm.addEventListener("mouseenter", _this.handleMouseEnter);
+      reference.elm.addEventListener("mouseleave", _this.handleMouseLeave);
+    } else {
+      reference.elm.addEventListener("click", _this.handleClick);
+    }
   },
   methods: {
-    MouseEnter() {
+    handleMouseEnter() {
       setTimeout(() => {
         this.isShow = true;
       });
     },
-    MouseLeave() {
+    handleMouseLeave() {
       setTimeout(() => {
         this.isShow = false;
+      });
+    },
+    handleClick() {
+      setTimeout(() => {
+        this.isShow = !this.isShow;
       });
     }
   }
