@@ -50,7 +50,7 @@
         }
         @e panel{
             position: relative;
-            width:320px;
+            width:480px;
             color: #606266;
             background: #fff;
             border-radius: 4px;
@@ -67,6 +67,11 @@
         }
         @e content{
             height: 300px;
+        }
+        @e month{
+            display:inline-block;
+            width:68px;
+            text-align:center;
         }
         @e arrow{
             width: 8px;

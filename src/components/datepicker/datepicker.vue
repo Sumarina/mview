@@ -12,7 +12,12 @@
             icon="angle-double-right"
           ></font-awesome-icon>
         </div>
-        <div class="m-datepicker__content"></div>
+        <div class="m-datepicker__content">
+          <div class="m-datepicker__month" :key="index" v-for="(i,index) in month">
+            <div class="m-datepicker__week">{{i.week}}</div>
+            <div class="m-datepicker__day" :key="d" v-for="d in i.day">{{d}}</div>
+          </div>
+        </div>
         <!-- <div class="m-datepicker__arrow"></div> -->
       </div>
       <div slot="reference" class="m-datepicker__input">
@@ -31,8 +36,21 @@ export default {
   data() {
     return {
       currentFullYearMonth: "2019年8月",
-      date:"2019-05-27"
-    };
+      date:"2019-05-27",
+    }
+  },
+  computed:{
+    month(){
+      return [
+        {week:'sunday',day:[1,2,3,4,5]},
+        {week:'monday',day:[1,2,3,4,5]},
+        {week:'tuesday',day:[1,2,3,4,5]},
+        {week:'wednesday',day:[1,2,3,4,5]},
+        {week:'thursday',day:[1,2,3,4,5]},
+        {week:'friday',day:[1,2,3,4,5]},
+        {week:'saturday',day:[1,2,3,4,5]}
+      ]
+    }
   },
   methods:{
     clearInput(){
