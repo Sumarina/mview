@@ -4,11 +4,19 @@
       <div class="m-datepicker__panel">
         <div class="m-datepicker__header">
           <div>{{currentFullYearMonth}}</div>
-          <font-awesome-icon class="m-datepicker__icon angle-double-left" icon="angle-double-left"></font-awesome-icon>
-          <font-awesome-icon class="m-datepicker__icon angle-left" icon="angle-left"></font-awesome-icon>
-          <font-awesome-icon class="m-datepicker__icon angle-right" icon="angle-right"></font-awesome-icon>
+          <font-awesome-icon @click="subYear" class="m-datepicker__icon angle-double-left" icon="angle-double-left"></font-awesome-icon>
           <font-awesome-icon
-            class="m-datepicker__icon angle-double-right"
+            @click="subMonth"
+            class="m-datepicker__icon angle-left"
+            icon="angle-left"
+          ></font-awesome-icon>
+          <font-awesome-icon
+            @click="addMonth"
+            class="m-datepicker__icon angle-right"
+            icon="angle-right"
+          ></font-awesome-icon>
+          <font-awesome-icon
+            @click="addYear" class="m-datepicker__icon angle-double-right"
             icon="angle-double-right"
           ></font-awesome-icon>
         </div>
@@ -42,36 +50,66 @@ export default {
   data() {
     return {
       month: new Date().getMonth() + 1,
-      panelData: []
+      panelData: [],
+      currentYear: DATE.getFullYear(),
+      currentMonth: DATE.getMonth() + 1
     };
   },
   computed: {
     currentFullYearMonth() {
-      return DATE.getFullYear() + "年" + (DATE.getMonth() + 1) + "月";
+      return this.currentYear + "年" + this.currentMonth + "月";
     },
     date() {
       return getFullDate(DATE);
     }
   },
   mounted() {
-    this.panelData = [...this.computedCurrentMonthDatas(DATE)];
+    this.panelData = [...this.computedCurrentMonthDatas()];
   },
   methods: {
     clearInput() {
       this.date = "";
       console.log("clearInput...");
-      this.computedCurrentMonthDatas(DATE);
     },
-    computedCurrentMonthDatas(date) {
-      const currentDate = date;
-      const currentMonth = currentDate.getMonth() + 1;
+    addMonth() {
+      let currentMonth = this.currentMonth + 1;
+      if(currentMonth>12){
+        currentMonth=1;
+        this.currentYear=this.currentYear+1;
+      }
+      this.currentMonth=currentMonth;
+    },
+    subMonth() {
+      let currentMonth = this.currentMonth - 1;
+      if(currentMonth<1){
+        currentMonth=12;
+        this.currentYear=this.currentYear-1;
+      }
+      this.currentMonth=currentMonth;
+    },
+    addYear() {
+      this.currentYear=this.currentYear+1;
+    },
+    subYear() {
+      this.currentYear=this.currentYear-1;
+    },
+    computedCurrentMonthDatas() {
+      // const currentDate = date;
+      const currentMonth = this.currentMonth;
+      const currentYear = this.currentYear;
       /**几号 */
-      const day = currentDate.getDate();
+      // const day = currentDate.getDate();
       /**计算周几 */
-      const currentDays = currentDate.getDay();
+      const currentDays = this.computedFirstDay();
       /**计算当月的天数 */
-      const currentMonthDays = getMonthDays(currentMonth);
-      const lastMonthDays = getMonthDays(currentMonth - 1);
+      const currentMonthDays = getMonthDays(currentYear, currentMonth);
+      let lastMonth=currentMonth - 1;
+      let lastYear=currentYear;
+      if(lastMonth<1){
+        lastMonth=12;
+        lastYear=lastYear-1;
+      }
+      const lastMonthDays = getMonthDays(lastYear, lastMonth);
       var datas = [];
       for (let i = 0; i < 7; i++) {
         /**一周7天 */
@@ -114,8 +152,24 @@ export default {
           day: days
         });
       }
-      
+
       return datas;
+    },
+    computedFirstDay() {
+      /**计算每月第一天是周几 */
+      const currentMonth = this.currentMonth;
+      const currentYear = this.currentYear;
+      const d = currentYear + "/" + currentMonth;
+      const date = new Date(d);
+      return date.getDay();
+    }
+  },
+  watch: {
+    currentMonth: function() {
+      this.panelData = [...this.computedCurrentMonthDatas()];
+    },
+    currentYear:function(){
+      this.panelData = [...this.computedCurrentMonthDatas()];
     }
   }
 };
@@ -146,8 +200,8 @@ function getFullDate(date) {
   );
 }
 
-function getMonthDays(month) {
-  switch (month) {
+function getMonthDays(currentYear, currentMonth) {
+  switch (currentMonth) {
     case 1:
     case 3:
     case 5:
@@ -162,8 +216,7 @@ function getMonthDays(month) {
     case 11:
       return 30;
     case 2: {
-      const year = new Date().getFullYear();
-      if (!year % 4 && year % 100) {
+      if (!currentYear % 4 && currentYear % 100) {
         return 29;
       } else return 28;
     }
