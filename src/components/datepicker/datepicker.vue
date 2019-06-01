@@ -3,8 +3,15 @@
     <m-popover trigger="click" title>
       <div class="m-datepicker__panel">
         <div class="m-datepicker__header">
-          <div>{{currentFullYearMonth}}</div>
-          <font-awesome-icon @click="subYear" class="m-datepicker__icon angle-double-left" icon="angle-double-left"></font-awesome-icon>
+          <div>
+            <span class="m-datepicker__title">{{currentFullYear}}</span>
+            <span class="m-datepicker__title">{{currentFullMonth}}</span>
+          </div>
+          <font-awesome-icon
+            @click="subYear"
+            class="m-datepicker__icon angle-double-left"
+            icon="angle-double-left"
+          ></font-awesome-icon>
           <font-awesome-icon
             @click="subMonth"
             class="m-datepicker__icon angle-left"
@@ -16,14 +23,18 @@
             icon="angle-right"
           ></font-awesome-icon>
           <font-awesome-icon
-            @click="addYear" class="m-datepicker__icon angle-double-right"
+            @click="addYear"
+            class="m-datepicker__icon angle-double-right"
             icon="angle-double-right"
           ></font-awesome-icon>
         </div>
         <div class="m-datepicker__content">
           <div class="m-datepicker__month" :key="index" v-for="(i,index) in panelData">
             <div class="m-datepicker__week">{{i.week}}</div>
-            <div class="m-datepicker__day" :key="d" v-for="d in i.day">{{d}}</div>
+            <div class="m-datepicker__day" :key="d" v-for="d in i.day">
+              <!-- <span class="m-datepicker__day--gray active" v-if="d==today">{{d}}</span> -->
+              <span v-bind:class="[today==d&todayMonth==currentMonth?'active':'','m-datepicker__day--gray']">{{d}}</span>
+            </div>
           </div>
         </div>
         <!-- <div class="m-datepicker__arrow"></div> -->
@@ -56,11 +67,20 @@ export default {
     };
   },
   computed: {
-    currentFullYearMonth() {
-      return this.currentYear + "年" + this.currentMonth + "月";
+    currentFullYear() {
+      return this.currentYear + "年" ;
+    },
+    currentFullMonth() {
+      return this.currentMonth + "月";
     },
     date() {
       return getFullDate(DATE);
+    },
+    today() {
+      return new Date().getDate();
+    },
+    todayMonth() {
+      return new Date().getMonth() + 1;
     }
   },
   mounted() {
@@ -73,25 +93,25 @@ export default {
     },
     addMonth() {
       let currentMonth = this.currentMonth + 1;
-      if(currentMonth>12){
-        currentMonth=1;
-        this.currentYear=this.currentYear+1;
+      if (currentMonth > 12) {
+        currentMonth = 1;
+        this.currentYear = this.currentYear + 1;
       }
-      this.currentMonth=currentMonth;
+      this.currentMonth = currentMonth;
     },
     subMonth() {
       let currentMonth = this.currentMonth - 1;
-      if(currentMonth<1){
-        currentMonth=12;
-        this.currentYear=this.currentYear-1;
+      if (currentMonth < 1) {
+        currentMonth = 12;
+        this.currentYear = this.currentYear - 1;
       }
-      this.currentMonth=currentMonth;
+      this.currentMonth = currentMonth;
     },
     addYear() {
-      this.currentYear=this.currentYear+1;
+      this.currentYear = this.currentYear + 1;
     },
     subYear() {
-      this.currentYear=this.currentYear-1;
+      this.currentYear = this.currentYear - 1;
     },
     computedCurrentMonthDatas() {
       // const currentDate = date;
@@ -103,11 +123,11 @@ export default {
       const currentDays = this.computedFirstDay();
       /**计算当月的天数 */
       const currentMonthDays = getMonthDays(currentYear, currentMonth);
-      let lastMonth=currentMonth - 1;
-      let lastYear=currentYear;
-      if(lastMonth<1){
-        lastMonth=12;
-        lastYear=lastYear-1;
+      let lastMonth = currentMonth - 1;
+      let lastYear = currentYear;
+      if (lastMonth < 1) {
+        lastMonth = 12;
+        lastYear = lastYear - 1;
       }
       const lastMonthDays = getMonthDays(lastYear, lastMonth);
       var datas = [];
@@ -168,7 +188,7 @@ export default {
     currentMonth: function() {
       this.panelData = [...this.computedCurrentMonthDatas()];
     },
-    currentYear:function(){
+    currentYear: function() {
       this.panelData = [...this.computedCurrentMonthDatas()];
     }
   }
