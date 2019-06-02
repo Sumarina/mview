@@ -85,6 +85,7 @@
                 height:30px;
                 border-radius:15px;
                 background-color:#f5f5f5;
+                cursor: pointer;
                 &.active{
                     background-color:#b2cf07;
                     color:#ffffff;

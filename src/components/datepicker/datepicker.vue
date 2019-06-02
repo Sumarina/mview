@@ -32,8 +32,10 @@
           <div class="m-datepicker__month" :key="index" v-for="(i,index) in panelData">
             <div class="m-datepicker__week">{{i.week}}</div>
             <div class="m-datepicker__day" :key="d" v-for="d in i.day">
-              <!-- <span class="m-datepicker__day--gray active" v-if="d==today">{{d}}</span> -->
-              <span v-bind:class="[today==d&todayMonth==currentMonth?'active':'','m-datepicker__day--gray']">{{d}}</span>
+              <span
+                @click="changeDate(d)"
+                v-bind:class="[today==d&todayMonth==currentMonth?'active':'','m-datepicker__day--gray']"
+              >{{d}}</span>
             </div>
           </div>
         </div>
@@ -60,6 +62,7 @@ export default {
   name: "MDatepicker",
   data() {
     return {
+      date: getFullDate(DATE),
       month: new Date().getMonth() + 1,
       panelData: [],
       currentYear: DATE.getFullYear(),
@@ -68,13 +71,10 @@ export default {
   },
   computed: {
     currentFullYear() {
-      return this.currentYear + "年" ;
+      return this.currentYear + "年";
     },
     currentFullMonth() {
       return this.currentMonth + "月";
-    },
-    date() {
-      return getFullDate(DATE);
     },
     today() {
       return new Date().getDate();
@@ -90,6 +90,9 @@ export default {
     clearInput() {
       this.date = "";
       console.log("clearInput...");
+    },
+    changeDate(day) {
+      this.date = this.currentYear + "-" + this.currentMonth + "-" + day;
     },
     addMonth() {
       let currentMonth = this.currentMonth + 1;
