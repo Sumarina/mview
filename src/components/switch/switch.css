@@ -24,7 +24,7 @@
       }
 
       @when off {
-        left: 31px;
+        left: 30px;
         background-color: #bbbbbb;
       }
       @m on{
@@ -38,14 +38,13 @@
             top: 0px;
 
             text-align: center;
-            left: 47px;
 
-            left: 18px;
+            left: 15px;
             border-radius: 11px;
       }
       @m off{
           background-color: #bbbbbb;
-            left: -29px;
+            left: -30px;
 
             width: 30px;
             height: 22px;
