@@ -1,21 +1,67 @@
-@component-namespace m{
-    @b button{
-        width:120px;
+@component-namespace m {
+    @b button {
+        width: 120px;
         height: 38px;
-        border-radius:4px;
-        background-color:#b2cf07;
-        border:1px solid #b2cf07;
-        outline:0;
+        border-radius: 4px;
+        outline: 0;
         cursor: pointer;
-        color:#ffffff;
-        font-size:14px;
-        text-align:center;
+        font-size: 14px;
+        text-align: center;
         display: inline-block;
+        
+        @e default{
+            background-color: #ffffff;
+            border: 1px solid #dcdfe6;
+            color: #606266;
+            &:hover {
+                color: #bedd06;
+                background-color: #f1f5d9;
+                border-color: #d5e85f;
+            }
+        }
 
-        &:hover{
-            color: #fff;
-            background-color: #bedd06;
-            border-color: #bedd06;
+        @e primary {
+            background-color: #b2cf07;
+            border: 1px solid #b2cf07;
+            color: #ffffff;
+            &:hover {
+                color: #fff;
+                background-color: #bedd06;
+                border-color: #bedd06;
+            }
+        }
+
+        @e success {
+            color: #FFFFFF;
+            background-color: #67C23A;
+            border-color: #67C23A;
+            &:hover {
+                background: #85ce61;
+                border-color: #85ce61;
+                color: #FFFFFF;
+            }
+        }
+
+        @e danger {
+            color: #FFFFFF;
+            background-color: #F56C6C;
+            border-color: #F56C6C;
+            &:hover {
+                background: #f78989;
+                border-color: #f78989;
+                color: #FFFFFF;
+            }
+        }
+
+        @e warning {
+            color: #FFFFFF;
+            background-color: #E6A23C;
+            border-color: #E6A23C;
+            &:hover {
+                background: #ebb563;
+                border-color: #ebb563;
+                color: #FFFFFF;
+            }
         }
 
     }

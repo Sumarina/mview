@@ -5,7 +5,9 @@
 ### 基础用法
 
 <div class="demo-block" >
-<m-tooltip  />
+<m-tooltip>
+<m-button>tooltip</m-buttom>
+</m-tooltip>
 
 <script>
     export default {

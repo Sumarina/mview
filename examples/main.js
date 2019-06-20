@@ -6,6 +6,8 @@ import router from './router'
 import demoBlock from './components/demo-block.vue'
 import MView from '../src/components';
 
+import './demo-style/index.css';
+
 Vue.component('demo-block', demoBlock)
 Vue.use(MView)
 

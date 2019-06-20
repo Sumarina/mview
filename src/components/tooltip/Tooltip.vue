@@ -3,6 +3,7 @@
         <span class="m-tooltip__top m-tooltip__top--left">
             {{value}}
         </span>
+        <slot></slot>
     </div>
 </template>
 
@@ -30,7 +31,10 @@ export default {
         isActive:function(){
             return !!this.isHover?'show':'hide';
         }
-    } 
+    },
+     mounted(){
+         
+     }
 }
 </script>
 

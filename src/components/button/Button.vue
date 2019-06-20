@@ -1,27 +1,37 @@
 <template>
-    <button class="m-button" @click="handleClick">
-        <slot></slot>
-    </button>
+  <button :class="['m-button__'+type,'m-button',customeClass]" @click="handleClick">
+    <slot></slot>
+  </button>
 </template>
 
 <script>
-import './Button.css';
+import "./Button.css";
 export default {
   name: "MButton",
   props: {
     type: {
       type: String,
-      default: "primary"
+      default: "default"
     },
-    plain:Boolean,
-    disabled:Boolean,
-    round:Boolean
+    plain: Boolean,
+    disabled: Boolean,
+    round: Boolean,
+    customeClass:{
+      type:String,
+      default:""
+    }
+
   },
-  methods:{
-      handleClick(event){
-          console.log(event);
-          this.$emit('click',event);
-      }
+  data() {
+    return {
+      
+    };
+  },
+  mounted() {},
+  methods: {
+    handleClick(event) {
+      this.$emit("click", event);
+    }
   }
 };
 </script>

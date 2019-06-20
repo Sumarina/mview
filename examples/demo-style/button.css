@@ -1,0 +1,12 @@
+.customeClass {
+    background-color: #5ea8ee;
+    border: 1px solid #5ea8ee;
+    color: #ffffff;
+    
+}
+
+.customeClass:hover{
+    color: #ffffff;
+    background-color: #6bb1f1;
+    border-color: #6bb1f1;
+}
