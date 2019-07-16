@@ -79,6 +79,7 @@
             text-align:center;
         }
         @e day{
+            margin:6px 0px;
             @m gray{
                 display: inline-block;
                 width:30px;
@@ -89,6 +90,13 @@
                 &.active{
                     background-color:#b2cf07;
                     color:#ffffff;
+                }
+                &.hover{
+                    color:#b2cf07;
+                }
+                &.today{
+                    color:#b2cf07;
+                    font-weight:bold;
                 }
             }
             

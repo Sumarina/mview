@@ -63,7 +63,7 @@ export default {
   data() {
     return {
       date: getFullDate(DATE),
-      month: new Date().getMonth() + 1,
+      month: DATE.getMonth() + 1,
       panelData: [],
       currentYear: DATE.getFullYear(),
       currentMonth: DATE.getMonth() + 1
@@ -77,10 +77,13 @@ export default {
       return this.currentMonth + "月";
     },
     today() {
-      return new Date().getDate();
+      return DATE.getDate();
     },
     todayMonth() {
-      return new Date().getMonth() + 1;
+      return DATE.getMonth() + 1;
+    },
+    todayYear() {
+      return DATE.getFullYear();
     }
   },
   mounted() {
@@ -174,6 +177,7 @@ export default {
           week: getWeekTxt(i),
           day: days
         });
+        this.isToday(days);
       }
 
       return datas;
@@ -185,6 +189,17 @@ export default {
       const d = currentYear + "/" + currentMonth;
       const date = new Date(d);
       return date.getDay();
+    },
+    isToday(arr) {
+      if (!Array.isArray(arr)) return [];
+      const result = arr.filter((value, index) => {
+        return (
+          value == this.today &&
+          this.currentYear == this.todayYear &&
+          this.currentMonth == this.todayMonth
+        );
+      });
+      return result;
     }
   },
   watch: {
